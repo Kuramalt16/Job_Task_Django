@@ -1,0 +1,21 @@
+{% extends 'company/company_layout.html' %}
+
+{% block title %}
+        {{ company.company_symbol }}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1> Company symbol: <span style="color: #7a4d38;">{{ company.company_symbol }}</span></h1>
+        <p> Company name: <span style="color: #7a4d38;">{{ company.company_name }}</span></p>
+        <p> Industry: <span style="color: #7a4d38;">{{ company.company_industry }}</span></p>
+        <p> Volume: <span style="color: #7a4d38;">{{ company.company_volume }}</span></p>
+        <p>
+            <a href="/Company">Go Back</a> to the list.
+            <a href="{{ company.company_symbol }}/Delete">
+                <span style="color: #ff0000;"> Delete </span>
+            </a> entry.
+            <a href="{{ company.company_symbol }}/Update">Update</a> entry.
+        </p>
+    </section>
+{% endblock %}

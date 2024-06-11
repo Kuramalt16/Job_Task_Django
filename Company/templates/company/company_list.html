@@ -1,0 +1,26 @@
+{% extends 'company/company_layout.html' %}
+
+{% block title %}
+    Companies List
+{% endblock %}
+
+{% block content %}
+        <table>
+            <tr>
+                <th>Company Symbol</th>
+                <th>Company Name</th>
+                <th>Industry</th>
+                <th>Company Volume</th>
+                <th>Last Update</th>
+            </tr>
+            {% for company in companies %}
+                <tr>
+                    <td> <a href="{% url 'companies:view_company' slug=company.company_symbol %}"> {{ company.company_symbol }} </a> </td>
+                    <td>{{ company.company_name }}</td>
+                    <td>{{ company.company_industry }}</td>
+                    <td>{{ company.company_volume }} </td>
+                    <td>{{ company.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

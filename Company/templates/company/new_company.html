@@ -1,0 +1,20 @@
+{% extends 'company/company_layout.html' %}
+
+{% block title %}
+    New Company
+{% endblock %}
+
+{% block content %}
+        <form action="New" method="Post">
+            {% csrf_token %}
+            <label for="ticker">Company ticker symbol:</label>
+            <input type="text" id="ticker" name="ticker"><br><br>
+            <button>Submit</button>
+            {% if error == 1 %}
+                <p> The company {{ ticker }} already exists:</p>
+            {% endif %}
+            {% if error == 2 %}
+                <p> The ticker: {{ ticker }} is invalid</p>
+            {% endif %}
+        </form>
+{% endblock %}
