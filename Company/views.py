@@ -3,11 +3,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Companies
 import yfinance as yf
-import datetime
+from django.core.paginator import Paginator
+from datetime import datetime
+
+def Company_home(request):
+    return render(request, 'company/company_home.html')
 
 def Company_list(request):
-    companies = Companies.objects.all()
-    return render(request, 'company/company_list.html', {'companies': companies})
+    companies = Companies.objects.all().order_by('company_symbol')
+    paginator = Paginator(companies, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    total_companies = paginator.count
+    return render(request, 'company/company_list.html', {'page_obj': page_obj, 'company_count': total_companies})
 
 def New_Company(request):
     if request.method == "POST":
@@ -36,6 +44,14 @@ def New_Company(request):
         return render(request, 'company/new_company.html', {'error': 0})
 
 def View_Company(request, slug):
+    if request.method == "POST":
+        company = Companies.objects.get(company_symbol=slug)
+        company.company_name = request.POST.get('name')
+        company.company_industry = request.POST.get('industry')
+        company.company_volume = request.POST.get('volume')
+        company.date = datetime.now()
+        company.save()
+
     company = Companies.objects.get(company_symbol=slug)
     return render(request, 'company/view_company.html', {'company': company})
 
@@ -43,3 +59,11 @@ def Delete_Company(request, slug):
     company = Companies.objects.get(company_symbol=slug)
     company.delete()
     return redirect('companies:campanies_list')
+
+def Update_Company(request, slug):
+    company = Companies.objects.get(company_symbol=slug)
+    return render(request, 'company/update_company.html', {'company': company})
+
+def Export_companies(request):
+    companies = Companies.objects.all()
+    return render(request, 'company/export.html', {'companies': companies})

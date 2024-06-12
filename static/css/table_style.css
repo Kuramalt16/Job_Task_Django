@@ -49,3 +49,6 @@ h1, p {
     padding-left: 20px;
     padding-top: 10px;
 }
+.current_page {
+    color: #72962e
+}

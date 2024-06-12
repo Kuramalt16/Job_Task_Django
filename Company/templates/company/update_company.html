@@ -1,0 +1,18 @@
+{% extends 'company/company_layout.html' %}
+
+{% block title %}
+        Update {{ company.company_symbol }}
+{% endblock %}
+
+{% block content %}
+        <form action="/Company/{{ company.company_symbol }}" method="Post">
+            {% csrf_token %}
+            <label for="cname">Company name:</label>
+            <input type="text" id="cname" name="name" value="{{ company.company_name }}"><br><br>
+            <label for="industry">Company industry:</label>
+            <input type="text" id="industry" name="industry" value="{{ company.company_industry }}"><br><br>
+            <label for="volume">Company volume:</label>
+            <input type="text" id="volume" name="volume" value="{{ company.company_volume }}"><br><br>
+            <button>Submit</button>
+        </form>
+{% endblock %}

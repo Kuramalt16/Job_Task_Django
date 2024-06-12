@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    <main>
         <table>
             <tr>
                 <th>Company Symbol</th>
@@ -13,7 +14,7 @@
                 <th>Company Volume</th>
                 <th>Last Update</th>
             </tr>
-            {% for company in companies %}
+            {% for company in page_obj|slice:":10" %}
                 <tr>
                     <td> <a href="{% url 'companies:view_company' slug=company.company_symbol %}"> {{ company.company_symbol }} </a> </td>
                     <td>{{ company.company_name }}</td>
@@ -23,4 +24,22 @@
                 </tr>
             {% endfor %}
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1"> First page |</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+                {% endif %}
+
+                <span class="current_page">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next page |</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+                {% endif %}
+            </span>
+        </div>
+    </main>
 {% endblock %}
