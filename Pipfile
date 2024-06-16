@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 yfinance = "*"
+celery = {extras = ["redis"], version = "*"}
+django-celery-beat = "*"
 
 [dev-packages]
 

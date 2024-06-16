@@ -1,0 +1,145 @@
+
+/* defined used colors */
+:root {
+    --defined_cyan: #81dbb8;
+    --defined_brown: #7a4d38;
+    --defined_dark_green: #72962e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Pre-set body configuration */
+body {
+    min-height: 100vh;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 1rem;
+    display: flex;
+    flex-flow: column;
+}
+
+/* Pre-set header configuration */
+h1 {
+    font-size: 3rem;
+    text-align: left;
+}
+
+/* Pre-set paragraph configuration */
+p {
+    font-size: 1rem;
+}
+
+/* Pre-set anchor configuration */
+a {
+    color: var(--defined_cyan);
+}
+
+/* Main content configuration */
+.app_main {
+    display: grid;
+    place-content: start;
+}
+
+/* Main nav configuration */
+.first_navigation {
+    color: whitesmoke;
+    font-size: 3rem;
+    background-color: var(--defined_cyan);
+    display: flex;
+    flex-flow: row;
+    padding: 5px;
+}
+
+/* Main nav configuration */
+.first_navigation a {
+    color: var(--defined_cyan);
+}
+
+/* Second nav configuration */
+.second_navigation {
+    color: var(--defined_brown);
+    font-size: 2rem;
+    padding: 10px;
+}
+
+/* Second nav configuration */
+.second_navigation a {
+    color: var(--defined_dark_green);
+    font-size: 2.5rem;
+}
+
+/* Table in company_list configuration */
+table {
+    border: 1px solid whitesmoke;
+    border-collapse: collapse;
+}
+
+/* Table header in company_list configuration */
+th {
+    color: var(--defined_dark_green);
+    border: 1px solid whitesmoke;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Table data in company_list configuration */
+td {
+    color: var(--defined_cyan);
+    padding: 4px;
+    text-align: left;
+    border: 1px solid whitesmoke;
+
+}
+
+/* Section in view_company configuration */
+.company_view {
+    color: var(--defined_cyan);
+    border: 1px solid var(--defined_brown);
+    padding: 10px;
+}
+
+/* Section in view_company configuration */
+.company_view h1, p{
+    color: var(--defined_dark_green);
+}
+
+/* Page number in company_list configuration */
+.current_page {
+    color: var(--defined_dark_green);
+}
+
+/* Form configuration in view_company */
+.create_company, .update_form, .export_form {
+    color: var(--defined_dark_green);
+    border: 1px solid var(--defined_brown);
+    padding: 20px;
+}
+
+/* Borderless table configuration */
+.borderless-table, .borderless-table td, th {
+    border: none;
+    border-collapse: collapse;
+    width: 300px;
+}
+
+/* Center the gif container */
+.gif-container {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    background-color: black
+    position: relative;
+}
+
+/* Style the gif image */
+.gif-container img {
+    width: 10%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

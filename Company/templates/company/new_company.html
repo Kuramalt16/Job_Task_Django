@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-        <form action="New" method="Post">
+        <form class="create_company" action="New" method="Post">
             {% csrf_token %}
             <label for="ticker">Company ticker symbol:</label>
             <input type="text" id="ticker" name="ticker"><br><br>
-            <button>Submit</button>
+            <button style="color: #81dbb8; cursor: pointer; background: None; border: None;">Submit</button>
             {% if error == 1 %}
                 <p> The company {{ ticker }} already exists:</p>
             {% endif %}

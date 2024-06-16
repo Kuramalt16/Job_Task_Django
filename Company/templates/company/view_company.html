@@ -5,17 +5,54 @@
 {% endblock %}
 
 {% block content %}
-    <section>
+    <section class="company_view">
         <h1> Company symbol: <span style="color: #7a4d38;">{{ company.company_symbol }}</span></h1>
         <p> Company name: <span style="color: #7a4d38;">{{ company.company_name }}</span></p>
         <p> Industry: <span style="color: #7a4d38;">{{ company.company_industry }}</span></p>
         <p> Volume: <span style="color: #7a4d38;">{{ company.company_volume }}</span></p>
+        <p> Open: <span style="color: #7a4d38;">{{ company.company_open }}</span></p>
+        <p> Previous close: <span style="color: #7a4d38;">{{ company.company_close }}</span></p>
+        <p> Day high: <span style="color: #7a4d38;">{{ company.company_high }}</span></p>
+        <p> Day low: <span style="color: #7a4d38;">{{ company.company_low }}</span></p>
         <p>
             <a href="/Company/Show">Go Back</a> to the list.
-            <a href="{{ company.company_symbol }}/Delete">
-                <span style="color: #ff0000;"> Delete </span>
-            </a> entry.
-            <a href="{{ company.company_symbol }}/Update">Update</a> entry.
+            <table class="borderless-table">
+                <tr>
+                    <td>
+                        <form action="{% url 'companies:update_company' company.company_symbol %}"
+                              method="post" id="updateForm">
+                            {% csrf_token %}
+                            <input type="hidden" name="company_symbol" value="{{ company.company_symbol }}">
+                            <button type="submit"
+                                    style="color: #81dbb8; border: none; background: none; cursor: pointer;">
+                                Update entry.
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'companies:single_export' company.company_symbol %}"
+                              method="get" id="ExportForm">
+                            {% csrf_token %}
+                            <input type="hidden" name="company_symbol" value="{{ company.company_symbol }}">
+                            <button type="submit"
+                                    style="color: #81dbb8; border: none; background: none; cursor: pointer;">
+                                Export entry.
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'companies:delete_company' company.company_symbol %}"
+                              method="post" id="deleteForm">
+                            {% csrf_token %}
+                            <input type="hidden" name="company_symbol" value="{{ company.company_symbol }}">
+                            <button type="submit"
+                                    style="color: #ff0000; border: none; background: none; cursor: pointer;">
+                                Delete entry.
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
         </p>
     </section>
 {% endblock %}

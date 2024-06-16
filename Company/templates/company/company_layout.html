@@ -1,35 +1,16 @@
-<!doctype html>
-{% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>
-            {% block title %}
-                Django App
-            {% endblock %}
-        </title>
-    <link rel="stylesheet" href="{% static 'css/table_style.css' %}">
-    </head>
-    <body>
-        <nav1>
-            <a href="/"> Home </a> |
-            <a href="/about"> About </a> |
-            <a href="/Company"> Company </a>
-        </nav1>
-        <main></main>
-    </body>
-    <body>
-        <nav2>
-            <a href="/Company/Show"> Companies List </a> ●
-            <a href="/Company/New"> New Company </a> ●
-            <a href="/Company/Export"> Export </a>
-        </nav2>
-        <main>
-            {% block content %}
-            {% endblock %}
-        </main>
-    </body>
-</html>
+{% extends 'layout.html' %}
+
+{% block title %}
+    App
+{% endblock %}
+
+{% block main_page %}
+    <nav class="second_navigation">
+        <a href="/Company/Show"> Companies List </a> ●
+        <a href="/Company/New"> New Company </a>
+    </nav>
+    <main class="app_main">
+        {% block content %}
+        {% endblock %}
+    </main>
+{% endblock %}

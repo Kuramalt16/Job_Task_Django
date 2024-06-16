@@ -1,0 +1,23 @@
+{% extends 'company/company_layout.html' %}
+
+{% block title %}
+    Export company data
+{% endblock %}
+
+{% block content %}
+        <form class="export_form" action="Export" method="post">
+            {% csrf_token %}
+            <label for="sdate">Select start date:</label>
+            <input type="date" id="sdate" name="sdate"><br><br>
+            <label for="edate">Select end date:</label>
+            <input type="date" id="edate" name="edate"><br><br>
+            <button style="color: #81dbb8; cursor: pointer; background: None; border: None;" type="submit">Submit</button><br><br>
+            <p><a href="/Company/Show">Return</a> to the list.</p>
+            {% if error == 1 %}
+                <p> Invalid date format:</p>
+            {% endif %}
+            {% if error == 2 %}
+                <p> End date must not be greater than today:</p>
+            {% endif %}
+        </form>
+{% endblock %}

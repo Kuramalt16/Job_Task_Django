@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-        <form action="/Company/{{ company.company_symbol }}" method="Post">
+        <form class="update_form" action="/Company/{{ company.company_symbol }}" method="Post">
             {% csrf_token %}
             <label for="cname">Company name:</label>
             <input type="text" id="cname" name="name" value="{{ company.company_name }}"><br><br>
@@ -13,6 +13,14 @@
             <input type="text" id="industry" name="industry" value="{{ company.company_industry }}"><br><br>
             <label for="volume">Company volume:</label>
             <input type="text" id="volume" name="volume" value="{{ company.company_volume }}"><br><br>
+            <label for="open">Company open:</label>
+            <input type="text" id="open" name="open" value="{{ company.company_open }}"><br><br>
+            <label for="close">Company volume:</label>
+            <input type="text" id="close" name="close" value="{{ company.company_close }}"><br><br>
+            <label for="high">Company volume:</label>
+            <input type="text" id="high" name="high" value="{{ company.company_high }}"><br><br>
+            <label for="low">Company volume:</label>
+            <input type="text" id="low" name="low" value="{{ company.company_low }}"><br><br>
             <button>Submit</button>
         </form>
 {% endblock %}

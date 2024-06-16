@@ -1,27 +1,33 @@
 <!doctype html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {% block title %}
-            Django App
-        {% endblock %}
-    </title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <nav>
-        <a href="/"> Home </a> |
-        <a href="/about"> About </a> |
-        <a href="/Company"> Company </a>
-    </nav>
-    <main>
-        {% block content%}
-        {% endblock %}
-    </main>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>
+            {% block title %}
+                Django App
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'css/home_page_style.css' %}">
+    </head>
+    <body>
+        <nav class="first_navigation">
+            <a href="/">
+                <span role="img" aria-label="Home" title="Home">🏠</span>
+            </a> |
+            <a href="/about">
+                <span role="img" aria-label="About" title="About">💡</span>
+            </a> |
+            <a href="/Company">
+                <span role="img" aria-label="Company" title="Company">🏢</span>
+            </a>
+        </nav>
+        <main class="main_page">
+            {% block main_page %}
+            {% endblock %}
+        </main>
+    </body>
 </html>
