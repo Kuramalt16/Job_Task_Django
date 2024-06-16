@@ -1,4 +1,5 @@
-# Job_Task_Django
+pip => 24.0 and python => 3.12 are required.
+
 To run the app install the requirements:
 
 	pip install -r requirements.txt
